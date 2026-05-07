@@ -38,4 +38,4 @@ properties:
     MYSQL_ROOT_PASSWORD:
       vault: MYSQL_ROOT_PASSWORD_KEY
     DB_MASTER: mariadb-master-11-4
-    revision : 2
+    revision : 3
