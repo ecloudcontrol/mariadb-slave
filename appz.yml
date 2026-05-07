@@ -23,6 +23,7 @@ volumes:
     mount: /appz/data/mysql
     name: data
     size: 5Gi
+    matchLabels: false
   - claim: mariadb-slave-backup
     class: "linode-block-storage-retain"
     mount: /appz/backup
