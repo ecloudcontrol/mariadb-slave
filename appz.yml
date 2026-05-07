@@ -1,17 +1,17 @@
 app:
     name: mariadb Slave
     code: mariadbslave
-    notify: appzdev@cloudbourne.co
+    notify: rniranjan@cloudbourne.co
 
 build:
-    version: 10.4
+    version: 11.4
     env: DEV
     build_file: none
     output_files: output/*.zip
-    image_template: mariadb_slave-10.4
+    image_template: mariadb_slave-11.4
 
 deploy:
-    context: alpha/DEV
+    context: plantmaster/DEV
     type: statefulset
     replicas: 1
     port:
@@ -19,15 +19,16 @@ deploy:
 
 volumes:
   - claim: mariadb-slave-data
-    class: "linode-block-storage-retain"
-    mount: /appz/data
+    class: linode-block-storage
+    mount: /appz/data/mysql
     name: data
     size: 5Gi
   - claim: mariadb-slave-backup
-    class: "linode-block-storage-retain"
+    class: linode-block-storage
     mount: /appz/backup
     name: backup
     size: 5Gi
+    matchLabels: false
 
 properties:
     MYSQL_REPLICATION_USER: replication
@@ -35,5 +36,5 @@ properties:
       vault: MYSQL_REPLICATION_PASSWORD
     MYSQL_ROOT_PASSWORD:
       vault: MYSQL_ROOT_PASSWORD_KEY
-    DB_MASTER: mariadb-master-10-4
-    revision : 25
+    DB_MASTER: mariadb-master-11-4
+    revision : 0
