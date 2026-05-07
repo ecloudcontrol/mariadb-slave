@@ -38,4 +38,9 @@ properties:
     MYSQL_ROOT_PASSWORD:
       vault: MYSQL_ROOT_PASSWORD_KEY
     DB_MASTER: mariadb-master-11-4
+    MYSQL_USER: wordpress
+    MYSQL_PASSWORD:
+      vault: MYSQL_PASSWORD_KEY
+    BACKUP_RETENTION: 1
+    BINLOG_EXPIRE_LOGS_SECONDS: 259200
     revision : 3
