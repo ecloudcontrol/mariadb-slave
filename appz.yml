@@ -19,12 +19,12 @@ deploy:
 
 volumes:
   - claim: mariadb-slave-data
-    class: linode-block-storage
+    class: "linode-block-storage-retain"
     mount: /appz/data/mysql
     name: data
     size: 5Gi
   - claim: mariadb-slave-backup
-    class: linode-block-storage
+    class: "linode-block-storage-retain"
     mount: /appz/backup
     name: backup
     size: 5Gi
